@@ -59,7 +59,7 @@ function displayQuestions() {
 
 
  function selectAnswerDisplay () {
-   $('#quizPage').on('submit', function (event) {
+   $('form').on('submit', function (event) {
     event.preventDefault();
     
     let selectedAnswer = $( "input[type=radio]:checked" );
