@@ -17,22 +17,22 @@ function callQuestions () {
             <form class='quizQuestions' >
                 <fieldset>
                     <label class='answerContainer'>
-                        <input type="radio" name="option" required></input>
+                        <input type="radio" name="option"  value='${Quiz[currentQuestion].multiple_choice[0]}' required></input>
                         <span>${Quiz[currentQuestion].multiple_choice[0]}</span>
                     </label>
 
                     <label class='answerContainer'>
-                        <input type="radio" name="option" required></input>
+                        <input type="radio" name="option"  value='${Quiz[currentQuestion].multiple_choice[1]}' required></input>
                         <span>${Quiz[currentQuestion].multiple_choice[1]}</span>
                     </label>
 
                     <label class='answerContainer'>
-                        <input type="radio" name="option" required></input>
+                        <input type="radio" name="option" value='${Quiz[currentQuestion].multiple_choice[2]}' required></input>
                         <span>${Quiz[currentQuestion].multiple_choice[2]}</span>
                     </label>
 
                     <label class='answerContainer'>
-                        <input type="radio" name="option" required></input>
+                        <input type="radio" name="option" value='${Quiz[currentQuestion].multiple_choice[3]}' required></input>
                         <span>${Quiz[currentQuestion].multiple_choice[3]}</span>
                     </label>
                 </fieldset>
@@ -45,11 +45,10 @@ restartQuiz();
 $('#questionNumDisplay').text(10)
 }
 }
-console.log(Quiz.length);
-console.log(Quiz[currentQuestion].question);
-console.log(Quiz[currentQuestion].answer);
 
-console.log(Quiz[1].answer);
+console.log('There are '+ Quiz.length + ' questions in this quiz.');
+console.log('Key: '+ Quiz[currentQuestion].question + ' '+ Quiz[currentQuestion].answer);
+console.log('The answer to question two is: '+Quiz[1].answer);
 
 
 
@@ -59,15 +58,15 @@ function displayQuestions() {
 
 
  function selectAnswerDisplay () {
-   $('form').on('submit', function (event) {
+   $('main').on('submit', function (event) {
     event.preventDefault();
     
-    let selectedAnswer = $( "input[type=radio]:checked" );
+    let selectedAnswer = $("input:checked");
     let selectedAnswerDis = selectedAnswer.val();
     let answer = `${Quiz[currentQuestion].answer}`;
-    console.log(selectedAnswer);
-    console.log(answer);
-      if (answer === selectedAnswer) {
+    console.log('The answer selected is: '+ selectedAnswerDis);
+    console.log('The correct answer is: '+ answer);
+      if (answer === selectedAnswerDis) {
      
        determindedCorrect();
        currentScoreDisplay();
@@ -169,7 +168,6 @@ function displayResults () {
 	
 	
 }
-
 
 
 function restartQuiz() {
