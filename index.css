@@ -1,0 +1,199 @@
+/*html {background: url(https://www.bajajfinserv.in/4_easy_ways_to_finance_your_growing_business_blog_img1_How%20to%20Finance%20a%20Growing%20Business.jpg); */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(66, 61, 61);
+}    
+
+.favicon img {
+  border-radius: 360px;
+  width:56px;
+  height:51px ;
+}
+
+.favicon > img {
+  width: 50px;
+  }
+.screens > .favicon {
+    flex-grow: 0;
+  }
+
+header {
+  text-align: right;
+  margin-top:0;
+  top:0;
+  padding:30px;
+  /*padding-left:-60px; */
+  background-color: dimgray;
+}
+
+header ul {
+text-align: right;
+}
+
+header ul li {
+  list-style: none;
+  display: inline-block;
+  text-align: right;
+  padding: 0 115px;
+  
+}
+main {
+  padding-left: 90px;
+  padding-right: 90px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.start {
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  margin: 10px;
+  image-orientation: center;
+  text-align: center;
+  background-color: white;
+  
+ }
+.start p {
+  text-align: left;
+}
+
+
+.navigation {
+  background-color: gray;
+  color: white;
+  text-align: right;
+  padding:0;
+  height:25px;
+ /* vertical-align: center;*/
+  }
+  
+.screens li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 12px;
+ /* vertical-align: center;*/
+  }
+
+  .hamburger {
+    color: gray;
+  }
+
+
+
+ //Quiz page questions 
+#question {
+  color:#000000;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.answerContainer {
+  display:block; 
+  position:relative; 
+  padding: 10px 10px 10px 50px; 
+  margin-bottom: 1px; 
+  cursor:pointer; 
+  font-size:18px; 
+  word-wrap: break-word;
+  }
+
+.quizSubmit {
+outline:none;
+font-size: 25px;
+height: 50px;
+width:150px;
+/*float:right;*/
+}
+/* button {
+outline:none;
+border-radius: 25px;
+height: 50px;
+width:150px;
+}
+
+button:hover {
+  background-color: #000000;
+  box-shadow: 0px 15px 20px black;
+  color: white;
+  transform: translateY(2px); }
+
+*/
+/*Media queries for screen changes.*/
+
+
+ @media screen and (min-width: 800px) {
+  .hamburger {
+   color:rgb(58, 55, 55); 
+   text-align:left; 
+   font-size: 0px;
+      }
+
+  .navigation {
+   height:50px;
+ }
+}
+
+/*color and alignment changes with under  Npx. color is redundant*/
+
+@media screen and (max-width: 800px) {
+  .screens li {
+     color:dimgrey; 
+     font-size: 0px;
+     
+  }
+}
+/* alignment of .start class to horizontally stack.*/
+@media screen and (min-width: 800px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   /* .start {
+     height:275px;
+    width: 206px;
+   } */
+} 
+
+
+/* .favicon appears next to the Score  @ tablet and desktop */
+
+@media screen and (min-width: 800px) {
+  header {
+     display: flex;
+     flex-direction: row;
+     align-content: center;
+     
+    }
+
+.favicon {
+      
+padding-left: 150px;
+padding-right:160px;
+    }
+
+  h1{
+    }
+}
+
+
+/*Only for assignment:*/
+
+a {
+  text-decoration:none;
+  color: black;
+}
+
+a:hover {
+text-decoration-line: underline;
+}
