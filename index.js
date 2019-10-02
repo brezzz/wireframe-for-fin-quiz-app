@@ -1,6 +1,7 @@
 let currentQuestion = 0;
 let currentScore = 0;
 
+
 function startQuiz () {
 $('.start').on('click', '#quizStart', function (event) {
 $('.start').remove();
@@ -8,6 +9,7 @@ $('#quizPage').css('display', 'block');
 $('#questionNumDisplay').text(1);
 callQuestions();
 displayQuestions();
+selectAnswerDisplay ()
 });
 }
 
@@ -36,7 +38,7 @@ function callQuestions () {
                         <span>${Quiz[currentQuestion].multiple_choice[3]}</span>
                     </label>
                 </fieldset>
-                <button type="submit" class="quizSubmit">Submit</button>
+                <input type="submit" class="quizSubmit" value="Submit"></input>
  </form>`
 		 
 } else { 
@@ -56,16 +58,16 @@ function displayQuestions() {
 	$('#quizPage').html(callQuestions());
 }
 
-
  function selectAnswerDisplay () {
-   $('main').on('submit', function (event) {
+   $('.quizQuestions').on('submit', function (event) {
     event.preventDefault();
     
     let selectedAnswer = $("input:checked");
     let selectedAnswerDis = selectedAnswer.val();
     let answer = `${Quiz[currentQuestion].answer}`;
-    console.log('The answer selected is: '+ selectedAnswerDis);
-    console.log('The correct answer is: '+ answer);
+    console.log('Key: '+ Quiz[currentQuestion].question + '    '+ Quiz[currentQuestion].answer);
+    console.log('The answer selected is: ' + selectedAnswerDis);
+    console.log('The correct answer is: ' + answer);
       if (answer === selectedAnswerDis) {
      
        determindedCorrect();
@@ -78,7 +80,7 @@ function displayNextQuestion() {
 	$('main').on('click', '#quizNext', function (event){
 	incrementQuestionNumber();
 	displayQuestions();
-	selectAnswerDisplay(); //was subbed for determineAnswer()*/
+	selectAnswerDisplay(); 
   
   });
 }
@@ -105,7 +107,11 @@ function determindedCorrect() {
             </div>
             <h2>That was the correct choice!</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Just in case that choice was luck, 
+                Here's a resource to learn more about:
+
+                
+<a href = '${Quiz[currentQuestion].topic_url} '>${Quiz[currentQuestion].topic} </a>
             </p>
 
             <button id='quizNext'>Next</button>
@@ -122,7 +128,10 @@ function	determindedIncorrect() {
             </div>
             <h2>That was the incorrect choice!</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Here's a resource to learn more about 
+
+ <a href = '${Quiz[currentQuestion].topic_url} '>${Quiz[currentQuestion].topic} </a> 
+                
             </p>
 
             <button id='quizNext'>Next</button>
@@ -132,14 +141,17 @@ function	determindedIncorrect() {
 
 
 function displayResults () {
+  
+  let percentageScore = (currentScore/10)*100+'%';
   if (currentScore >= 5) {
 		$('#quizPage').html(`<div class="feedback">
             <div class="pass_feedback"><img src="https://i.imgur.com/ixarVzn.jpg" alt="pennybags_pass_feedback_end" />
             </div>
-            <h2>You got X amount right!</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2>You got 
+  ${percentageScore}
+  
+ right!</h2>
+            
 
             <button id='quizRestart'>Restart</button>
         </div>`)
@@ -152,10 +164,11 @@ function displayResults () {
       `<div class="feedback">
             <div class="fail_feedback"><img src="https://i.imgur.com/17llem8.png" alt="pennybags_fail_feedback_end" />
             </div>
+
+
+
             <h2>Sorry, you got more than half wrong. Please try again</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+          
 
             <button id='quizRestart'>Restart</button>
         </div>`
@@ -169,7 +182,6 @@ function displayResults () {
 	
 }
 
-
 function restartQuiz() {
 	$('main').on('click', '#quizRestart', function (event) {
 		location.reload();
@@ -180,7 +192,7 @@ function restartQuiz() {
 function makeQuiz () {
 	startQuiz();
   callQuestions();
-//	displayQuestions(); //now within startQuiz
+
   selectAnswerDisplay(); 
   displayNextQuestion();
 	
